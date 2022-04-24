@@ -10,7 +10,7 @@ RUN CGO_ENABLED=0 go build -o build/fizzbuzz
 
 # part 2
 
-FROM scratch
+FROM gcr.io/distroless/static
 
 COPY --from=builded /app/build/fizzbuzz /app/fizzbuzz
 
