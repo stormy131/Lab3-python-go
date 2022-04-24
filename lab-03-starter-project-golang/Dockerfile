@@ -12,8 +12,12 @@ RUN CGO_ENABLED=0 go build -o build/fizzbuzz
 
 FROM gcr.io/distroless/static
 
+WORKDIR /app
+
+COPY ./templates/index.html /app/templates/index.html
+
 COPY --from=builded /app/build/fizzbuzz /app/fizzbuzz
 
 EXPOSE 8080
 
-ENTRYPOINT [ "/app/fizzbuzz" ]
+ENTRYPOINT [ "/app/fizzbuzz", "serve" ]
