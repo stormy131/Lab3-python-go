@@ -1,10 +1,9 @@
-FROM python:3.10-buster
+FROM python:3.10-alpine
 
 WORKDIR /app
-COPY ./requirements/backend.in /app/requirements/backend.in
+COPY . .
 
-COPY ./build/index.html /app/build/index.html
-COPY ./spaceship /app/spaceship
+RUN apk add build-base
 RUN python -m venv ./.venv
 RUN . ./.venv/bin/activate
 RUN pip install -r requirements/backend.in
