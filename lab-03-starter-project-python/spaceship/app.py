@@ -23,6 +23,7 @@ def make_app(settings: Settings) -> FastAPI:
 
     @app.get('/', include_in_schema=False, response_class=FileResponse)
     async def root() -> str:
+        print('ARTEM KOPYL LAB3')
         return 'build/index.html'
 
     return app
